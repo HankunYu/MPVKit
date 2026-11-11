@@ -1,0 +1,69 @@
+diff --git a/options/options.c b/options/options.c
+index 716c3e6..771cca8 100644
+--- a/options/options.c
++++ b/options/options.c
+@@ -247,6 +247,9 @@ static const m_option_t mp_vo_opt_list[] = {
+ #endif
+ #if HAVE_D3D11
+     {"d3d11-composition-size", OPT_SIZE_BOX(d3d11_composition_size)},
++#endif
++#if HAVE_MOLTENVK
++    {"moltenvk-surface-size", OPT_SIZE_BOX(moltenvk_surface_size)},
+ #endif
+     {"swapchain-depth", OPT_INT(swapchain_depth), M_RANGE(1, VO_MAX_SWAPCHAIN_DEPTH)},
+     {"override-display-fps", OPT_REPLACED("display-fps-override")},
+diff --git a/options/options.h b/options/options.h
+index 12dafea..c0dc797 100644
+--- a/options/options.h
++++ b/options/options.h
+@@ -85,6 +85,7 @@ typedef struct mp_vo_opts {
+     int video_sync;
+ 
+     struct m_geometry android_surface_size;
++    struct m_geometry moltenvk_surface_size;
+ 
+     struct m_geometry d3d11_composition_size;
+ 
+diff --git a/player/command.c b/player/command.c
+index 96bc06a..6ccba4e 100644
+--- a/player/command.c
++++ b/player/command.c
+@@ -8017,7 +8017,8 @@ void mp_option_run_callback(struct MPContext *mpctx, struct mp_option_callback *
+             queue_seek(mpctx, MPSEEK_RELATIVE, 0.0, MPSEEK_EXACT, 0);
+     }
+ 
+-    if (opt_ptr == &opts->vo->android_surface_size || opt_ptr == &opts->vo->d3d11_composition_size) {
++    if (opt_ptr == &opts->vo->android_surface_size || opt_ptr == &opts->vo->d3d11_composition_size ||
++        opt_ptr == &opts->vo->moltenvk_surface_size) {
+         if (mpctx->video_out)
+             vo_control(mpctx->video_out, VOCTRL_EXTERNAL_RESIZE, NULL);
+     }
+diff --git a/video/out/vulkan/context_moltenvk.m b/video/out/vulkan/context_moltenvk.m
+index 445b907..bab4a9b 100644
+--- a/video/out/vulkan/context_moltenvk.m
++++ b/video/out/vulkan/context_moltenvk.m
+@@ -73,11 +73,22 @@ static bool moltenvk_init(struct ra_ctx *ctx)
+     return false;
+ }
+ 
++// The host app owns the layer and reports its pixel size through
++// --moltenvk-surface-size (which triggers VOCTRL_EXTERNAL_RESIZE), the same
++// contract as --android-surface-size. Falls back to the layer's own size.
+ static bool moltenvk_reconfig(struct ra_ctx *ctx)
+ {
+     struct priv *p = ctx->priv;
+-    CGSize s = p->layer.drawableSize;
+-    ra_vk_ctx_resize(ctx, s.width, s.height);
++    int w = ctx->vo->opts->moltenvk_surface_size.w,
++        h = ctx->vo->opts->moltenvk_surface_size.h;
++    if (w <= 0 || h <= 0) {
++        CGSize s = p->layer.drawableSize;
++        w = s.width;
++        h = s.height;
++    }
++    if (w <= 1 || h <= 1)
++        return false;
++    ra_vk_ctx_resize(ctx, w, h);
+     return true;
+ }
+ 
