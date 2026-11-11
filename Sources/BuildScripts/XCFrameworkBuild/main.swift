@@ -390,8 +390,15 @@ private class BuildMPV: BaseBuild {
             "-Duchardet=enabled",
             "-Dvulkan=enabled",
             "-Dmoltenvk=enabled",  // from patch option
+            // Built-in scripts (osc, stats, console, select, auto_profiles) and user scripts.
+            // Prebuilt LuaJIT ships every platform; on iOS/tvOS it runs interpreter-only.
+            "-Dlua=luajit",
 
             "-Djavascript=disabled",
+            // pkg-config also searches the host's default path, so a Homebrew libX11 would
+            // otherwise be picked up and leave unresolved X11 symbols in Apple targets.
+            "-Dx11=disabled",
+            "-Dx11-clipboard=disabled",
             "-Dzimg=disabled",
             "-Djpeg=disabled",
             "-Dvapoursynth=disabled",
@@ -419,7 +426,6 @@ private class BuildMPV: BaseBuild {
             array.append("-Dgl-cocoa=enabled")
             array.append("-Dvideotoolbox-gl=enabled")
             array.append("-Dvideotoolbox-pl=enabled")
-            array.append("-Dlua=luajit")  // macos show video stats need enable 
         } else {
             array.append("-Dvideotoolbox-gl=disabled")
             array.append("-Dvideotoolbox-pl=enabled")
@@ -429,7 +435,6 @@ private class BuildMPV: BaseBuild {
             // CoreAudio HAL (AudioObject*) is macOS-only, so keep coreaudio off.
             array.append("-Davfoundation=enabled")
             array.append("-Dcoreaudio=disabled")
-            array.append("-Dlua=disabled")
             if platform == .maccatalyst {
                 array.append("-Dcocoa=disabled")
             } else if platform == .xros || platform == .xrsimulator {
