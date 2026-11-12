@@ -1,0 +1,54 @@
+diff --git a/input/keycodes.c b/input/keycodes.c
+index cc10b7d..a34da34 100644
+--- a/input/keycodes.c
++++ b/input/keycodes.c
+@@ -132,6 +132,20 @@ static const struct key_name key_names[] = {
+     { MP_KEY_TABLET_TOOL_STYLUS_BTN2, "TABLET_TOOL_STYLUS_BTN2" },
+     { MP_KEY_TABLET_TOOL_STYLUS_BTN3, "TABLET_TOOL_STYLUS_BTN3" },
+ 
++    { MP_KEY_GESTURE_TAP, "GESTURE_TAP" },
++    { MP_KEY_GESTURE_DOUBLE_TAP_LEFT, "GESTURE_DOUBLE_TAP_LEFT" },
++    { MP_KEY_GESTURE_DOUBLE_TAP_CENTER, "GESTURE_DOUBLE_TAP_CENTER" },
++    { MP_KEY_GESTURE_DOUBLE_TAP_RIGHT, "GESTURE_DOUBLE_TAP_RIGHT" },
++    { MP_KEY_GESTURE_SWIPE_LEFT, "GESTURE_SWIPE_LEFT" },
++    { MP_KEY_GESTURE_SWIPE_RIGHT, "GESTURE_SWIPE_RIGHT" },
++    { MP_KEY_GESTURE_LEFT_UP, "GESTURE_LEFT_UP" },
++    { MP_KEY_GESTURE_LEFT_DOWN, "GESTURE_LEFT_DOWN" },
++    { MP_KEY_GESTURE_RIGHT_UP, "GESTURE_RIGHT_UP" },
++    { MP_KEY_GESTURE_RIGHT_DOWN, "GESTURE_RIGHT_DOWN" },
++    { MP_KEY_GESTURE_PINCH_IN, "GESTURE_PINCH_IN" },
++    { MP_KEY_GESTURE_PINCH_OUT, "GESTURE_PINCH_OUT" },
++    { MP_KEY_GESTURE_HOLD, "GESTURE_HOLD" },
++
+     { MP_KEY_GAMEPAD_ACTION_DOWN, "GAMEPAD_ACTION_DOWN" },
+     { MP_KEY_GAMEPAD_ACTION_RIGHT, "GAMEPAD_ACTION_RIGHT" },
+     { MP_KEY_GAMEPAD_ACTION_LEFT, "GAMEPAD_ACTION_LEFT" },
+diff --git a/input/keycodes.h b/input/keycodes.h
+index b640f79..ff1d4a1 100644
+--- a/input/keycodes.h
++++ b/input/keycodes.h
+@@ -196,6 +196,24 @@
+ #define MP_KEY_GAMEPAD_RIGHT_STICK_LEFT   (MP_KEY_GAMEPAD+23)
+ #define MP_KEY_GAMEPAD_RIGHT_STICK_RIGHT  (MP_KEY_GAMEPAD+24)
+ 
++
++// Touch gestures, injected by a host app through the keypress/keydown/keyup commands.
++// Continuous gestures (swipe, vertical slide, pinch) arrive as repeated presses, like wheel ticks.
++#define MP_KEY_GESTURE                    (MP_KEY_BASE+0x200)
++#define MP_KEY_GESTURE_TAP                     (MP_KEY_GESTURE+0)
++#define MP_KEY_GESTURE_DOUBLE_TAP_LEFT         (MP_KEY_GESTURE+1)
++#define MP_KEY_GESTURE_DOUBLE_TAP_CENTER       (MP_KEY_GESTURE+2)
++#define MP_KEY_GESTURE_DOUBLE_TAP_RIGHT        (MP_KEY_GESTURE+3)
++#define MP_KEY_GESTURE_SWIPE_LEFT              (MP_KEY_GESTURE+4)
++#define MP_KEY_GESTURE_SWIPE_RIGHT             (MP_KEY_GESTURE+5)
++#define MP_KEY_GESTURE_LEFT_UP                 (MP_KEY_GESTURE+6)
++#define MP_KEY_GESTURE_LEFT_DOWN               (MP_KEY_GESTURE+7)
++#define MP_KEY_GESTURE_RIGHT_UP                (MP_KEY_GESTURE+8)
++#define MP_KEY_GESTURE_RIGHT_DOWN              (MP_KEY_GESTURE+9)
++#define MP_KEY_GESTURE_PINCH_IN                (MP_KEY_GESTURE+10)
++#define MP_KEY_GESTURE_PINCH_OUT               (MP_KEY_GESTURE+11)
++#define MP_KEY_GESTURE_HOLD                    (MP_KEY_GESTURE+12)
++
+ // Reserved area. Can be used for keys that have no explicit names assigned,
+ // but should be mappable by the user anyway.
+ #define MP_KEY_UNKNOWN_RESERVED_START (MP_KEY_BASE+0x10000)
