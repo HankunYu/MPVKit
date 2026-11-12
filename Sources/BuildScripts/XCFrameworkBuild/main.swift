@@ -713,6 +713,11 @@ private class BuildFFMPEG: BaseBuild {
         "--enable-demuxer=vc1", "--enable-demuxer=wav", "--enable-demuxer=webm_dash_manifest",
         // Animated images
         "--enable-demuxer=gif", "--enable-demuxer=apng",
+        // Still images recognized by content, so a wrong file extension does not matter;
+        // without these mpv picks the decoder from the extension alone.
+        "--enable-demuxer=image_jpeg_pipe", "--enable-demuxer=image_png_pipe",
+        "--enable-demuxer=image_webp_pipe", "--enable-demuxer=image_bmp_pipe",
+        "--enable-demuxer=image_tiff_pipe",
         // ./configure --list-bsfs
         "--enable-bsfs",
         // ./configure --list-decoders
