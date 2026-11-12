@@ -711,6 +711,8 @@ private class BuildFFMPEG: BaseBuild {
         "--enable-demuxer=ogg", "--enable-demuxer=rm", "--enable-demuxer=rtsp", "--enable-demuxer=rtp",
         "--enable-demuxer=srt", "--enable-demuxer=webvtt",
         "--enable-demuxer=vc1", "--enable-demuxer=wav", "--enable-demuxer=webm_dash_manifest",
+        // Animated images
+        "--enable-demuxer=gif", "--enable-demuxer=apng",
         // ./configure --list-bsfs
         "--enable-bsfs",
         // ./configure --list-decoders
@@ -743,6 +745,9 @@ private class BuildFFMPEG: BaseBuild {
         "--enable-decoder=mpl2", "--enable-decoder=movtext",
         "--enable-decoder=pgssub", "--enable-decoder=srt", "--enable-decoder=ssa", "--enable-decoder=subrip",
         "--enable-decoder=xsub", "--enable-decoder=webvtt",
+        // Still images, for mpv's image playback and for thumbnails
+        "--enable-decoder=png", "--enable-decoder=apng", "--enable-decoder=webp", "--enable-decoder=gif",
+        "--enable-decoder=bmp", "--enable-decoder=tiff",
 
         // ./configure --list-filters
         "--disable-filters",
@@ -761,6 +766,9 @@ private class BuildFFMPEG: BaseBuild {
         "--enable-filter=vflip", "--enable-filter=volume",
         "--enable-filter=w3fdif",
         "--enable-filter=yadif",
+        // Loudness and dynamics (volume normalization), and crop detection
+        "--enable-filter=dynaudnorm", "--enable-filter=loudnorm", "--enable-filter=acompressor",
+        "--enable-filter=cropdetect", "--enable-filter=crop",
         "--enable-filter=avgblur_vulkan", "--enable-filter=blend_vulkan", "--enable-filter=bwdif_vulkan",
         "--enable-filter=chromaber_vulkan", "--enable-filter=flip_vulkan", "--enable-filter=gblur_vulkan",
         "--enable-filter=hflip_vulkan", "--enable-filter=nlmeans_vulkan", "--enable-filter=overlay_vulkan",

@@ -91,48 +91,49 @@ let package = Package(
             ]
         ),
 
-        // Built from this branch with `make build platform=ios enable-gpl` (LuaJIT + the Yoru
-        // patches) and published as a release of the fork. iOS only: device and simulator.
-        // To iterate on libmpv locally, point this at `dist/release/xcframework/Libmpv.xcframework`.
+        // libmpv and FFmpeg are built from this branch with `make build platform=ios enable-gpl`
+        // (LuaJIT, the Yoru patches, and extra FFmpeg decoders and filters) and published as
+        // a release of the fork. iOS only: device and simulator. To iterate locally, point
+        // these eight at `dist/release/xcframework/<name>.xcframework`.
         .binaryTarget(
             name: "Libmpv-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-1/Libmpv-GPL.xcframework.zip",
-            checksum: "cc71b0d676d1148a8cd3a09b3efedd10af2d7584e4f0c19e59257e2357209a6c"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-2/Libmpv-GPL.xcframework.zip",
+            checksum: "230988e15dff80ca49c2abb2a112cee73f64f9267fed51c89ae73728a94e0ecb"
         ),
         .binaryTarget(
             name: "Libavcodec-GPL",
-            url: "https://github.com/mpvkit/MPVKit/releases/download/1.1.0-n9.0.2/Libavcodec-GPL.xcframework.zip",
-            checksum: "51863fa4b96dccc350fe4e3b125b7b71cd3728039baa3af87c7ea8b24f2bf61d"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-2/Libavcodec-GPL.xcframework.zip",
+            checksum: "52bd51e854d363f8f91db80f925a9fa26c1ba011d6ed6053829d894438da9806"
         ),
         .binaryTarget(
             name: "Libavdevice-GPL",
-            url: "https://github.com/mpvkit/MPVKit/releases/download/1.1.0-n9.0.2/Libavdevice-GPL.xcframework.zip",
-            checksum: "9cf58860173bc4f18551c4311753451f6f7f9b43bf0c1f88baf90ffd71b006f5"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-2/Libavdevice-GPL.xcframework.zip",
+            checksum: "9a80e525eba12c85d3945714dea8eaad57c67e3b4f03a8cbe117335c46d1308f"
         ),
         .binaryTarget(
             name: "Libavformat-GPL",
-            url: "https://github.com/mpvkit/MPVKit/releases/download/1.1.0-n9.0.2/Libavformat-GPL.xcframework.zip",
-            checksum: "c17b70aeeb684adc02c88f11e63c3cac6e010809e1906504956d72057bbeda1d"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-2/Libavformat-GPL.xcframework.zip",
+            checksum: "06247be2c27523fccd2b089003991b9611b4545014c2ec33f4c41cb38c531a2d"
         ),
         .binaryTarget(
             name: "Libavfilter-GPL",
-            url: "https://github.com/mpvkit/MPVKit/releases/download/1.1.0-n9.0.2/Libavfilter-GPL.xcframework.zip",
-            checksum: "8e0c5c8786fe86d8c08d854447cc3f15f6b83d2ca80c3c81c857b58ed01cbaf4"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-2/Libavfilter-GPL.xcframework.zip",
+            checksum: "10cbed654b4acc6b2c8009153645c76697aeafd629014d88404678e07deb1900"
         ),
         .binaryTarget(
             name: "Libavutil-GPL",
-            url: "https://github.com/mpvkit/MPVKit/releases/download/1.1.0-n9.0.2/Libavutil-GPL.xcframework.zip",
-            checksum: "0d67f42a2f03f9fdec65b014fb438063dcfafcad64244a2152b35285e56c0f2e"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-2/Libavutil-GPL.xcframework.zip",
+            checksum: "acdbf797db1a49b7f175e1162e16d7b8ad29bcd4dfda4f6bca64ecef3d5f8518"
         ),
         .binaryTarget(
             name: "Libswresample-GPL",
-            url: "https://github.com/mpvkit/MPVKit/releases/download/1.1.0-n9.0.2/Libswresample-GPL.xcframework.zip",
-            checksum: "faf081c9cf5b3e84c3a6ccdc076fca0f9e7db11b8c9713843bc91ccfad71ba7a"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-2/Libswresample-GPL.xcframework.zip",
+            checksum: "32344728476b82c43262a7da62184f605d16f9825173aee5997ef29bea4c5ccc"
         ),
         .binaryTarget(
             name: "Libswscale-GPL",
-            url: "https://github.com/mpvkit/MPVKit/releases/download/1.1.0-n9.0.2/Libswscale-GPL.xcframework.zip",
-            checksum: "cac0a48f8a8f3b7387042c0cdf9f642045c16d9fdad9e42280904040669d6e05"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-2/Libswscale-GPL.xcframework.zip",
+            checksum: "4b3582e25be3efcb5bbec74147e8fcb15b4bd198dae8c773c027d6fa94c6856d"
         ),
         //AUTO_GENERATE_TARGETS_BEGIN//
 
