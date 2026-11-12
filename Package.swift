@@ -91,12 +91,13 @@ let package = Package(
             ]
         ),
 
-        // Local build output of `make build platform=ios enable-gpl` (LuaJIT + Yoru patches).
-        // Only resolves on a machine that has run the build; switch to a release URL once the
-        // fork publishes its own artifacts.
+        // Built from this branch with `make build platform=ios enable-gpl` (LuaJIT + the Yoru
+        // patches) and published as a release of the fork. iOS only: device and simulator.
+        // To iterate on libmpv locally, point this at `dist/release/xcframework/Libmpv.xcframework`.
         .binaryTarget(
             name: "Libmpv-GPL",
-            path: "dist/release/xcframework/Libmpv.xcframework"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-1/Libmpv-GPL.xcframework.zip",
+            checksum: "cc71b0d676d1148a8cd3a09b3efedd10af2d7584e4f0c19e59257e2357209a6c"
         ),
         .binaryTarget(
             name: "Libavcodec-GPL",
