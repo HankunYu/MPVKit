@@ -97,43 +97,43 @@ let package = Package(
         // these eight at `dist/release/xcframework/<name>.xcframework`.
         .binaryTarget(
             name: "Libmpv-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-3/Libmpv-GPL.xcframework.zip",
-            checksum: "16400ae823fbf46c61a6598c73dd02959d1bcf9f46f3f954acd3d26175b47230"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-4/Libmpv-GPL.xcframework.zip",
+            checksum: "7c357244e8b8a820a3cc278fd97d495f558e06f2f09daf3afb2dbc4ade1bbfa8"
         ),
         .binaryTarget(
             name: "Libavcodec-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-3/Libavcodec-GPL.xcframework.zip",
-            checksum: "e9ed103ae1b5da1c7ec944ca220f5c3b1a8a9fa0944179b480492397cadb8c77"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-4/Libavcodec-GPL.xcframework.zip",
+            checksum: "9ef17b49c70a91bb18a4dff18fe778f2ad686557ad750788219a94d9258b9b44"
         ),
         .binaryTarget(
             name: "Libavdevice-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-3/Libavdevice-GPL.xcframework.zip",
-            checksum: "ca3b038fb96c75d021f17fc2ea6bd900212708f738fb8008b7c6a297e41706aa"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-4/Libavdevice-GPL.xcframework.zip",
+            checksum: "0f1d0f57f2d9e249f40de3c18b7b3435a717b5de232bc3fc68330e45799a7ee5"
         ),
         .binaryTarget(
             name: "Libavformat-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-3/Libavformat-GPL.xcframework.zip",
-            checksum: "7c985cf556c9b7711881f1348d5e32fec2b939a0c2b7eb8d879a4ad39ef61cca"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-4/Libavformat-GPL.xcframework.zip",
+            checksum: "eb52060f5808dab137c6a3c528074fa7832a4b5df4096cc9946e864f15232c49"
         ),
         .binaryTarget(
             name: "Libavfilter-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-3/Libavfilter-GPL.xcframework.zip",
-            checksum: "ab5ea05ce46624abe8f89b128b5e49d47583109f73ecb3cdf0b4d9c4edb9cd83"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-4/Libavfilter-GPL.xcframework.zip",
+            checksum: "99c651003fccf9fb8ce1b6e565a1c60bd74cf75248c45728ab6c70e9acae62a5"
         ),
         .binaryTarget(
             name: "Libavutil-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-3/Libavutil-GPL.xcframework.zip",
-            checksum: "edeada4a4b5fe7e7730d808a86e85476c406143d723ba623f628649bf9352270"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-4/Libavutil-GPL.xcframework.zip",
+            checksum: "28731b1905a69f77812dddf74b7f4d963657d9fa00e9e3fea9308797e4260245"
         ),
         .binaryTarget(
             name: "Libswresample-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-3/Libswresample-GPL.xcframework.zip",
-            checksum: "e504c9b81af47f682d7467bb97031614a5a7692c563963a1898e8514105d2681"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-4/Libswresample-GPL.xcframework.zip",
+            checksum: "557e60a3227dffa1028863c44f707336ccec8e22e40dcbe85c01b3f73288df80"
         ),
         .binaryTarget(
             name: "Libswscale-GPL",
-            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-3/Libswscale-GPL.xcframework.zip",
-            checksum: "a87a9d0b33384fba4c51c865f9329a2ac4985ea0409b6d58f67841e880f2fef6"
+            url: "https://github.com/HankunYu/MPVKit/releases/download/yoru-0.41.0-4/Libswscale-GPL.xcframework.zip",
+            checksum: "0527cbca9012176bc4bab6926e817b214fec0c47388469d89a4ef6ea7cb26118"
         ),
         //AUTO_GENERATE_TARGETS_BEGIN//
 

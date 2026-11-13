@@ -1,0 +1,24 @@
+diff --git a/video/out/libmpv_sw.c b/video/out/libmpv_sw.c
+index a4f8189..aa562af 100644
+--- a/video/out/libmpv_sw.c
++++ b/video/out/libmpv_sw.c
+@@ -170,6 +170,19 @@ static int render(struct render_backend *ctx, mpv_render_param *params,
+         struct mp_rect src_rc = p->src_rc;
+         src_rc.x0 = MP_ALIGN_DOWN(src_rc.x0, src.fmt.align_x);
+         src_rc.y0 = MP_ALIGN_DOWN(src_rc.y0, src.fmt.align_y);
++
++        // The rectangles follow the video parameters, which change as soon as a
++        // frame of another size is queued, while the frame at hand may still be
++        // the previous one (stills that hold several pictures do this at once).
++        // Cropping would then assert; report the frame as not renderable.
++        if (src_rc.x1 > src.w || src_rc.y1 > src.h ||
++            p->dst_rc.x1 > wrap_img.w || p->dst_rc.y1 > wrap_img.h ||
++            src.imgfmt != p->src_params.imgfmt)
++        {
++            mp_image_clear(&wrap_img, 0, 0, wrap_img.w, wrap_img.h);
++            return MPV_ERROR_GENERIC;
++        }
++
+         mp_image_crop_rc(&src, src_rc);
+ 
+         struct mp_image dst = wrap_img;
